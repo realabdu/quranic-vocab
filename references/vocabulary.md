@@ -1,24 +1,32 @@
 # Canonical English Quranic Vocabulary
 
-Derived from the [Verified Quranic vocabulary Sheet](https://docs.google.com/spreadsheets/d/1PLLtcgwbwtkOfpAZOotUQiZw-ARtZiAQuAkx2Z4D0XA/edit?gid=0#gid=0), normalized on 2026-08-21, with local revisions adopted on 2026-09-07 following [community feedback](https://community.itqan.dev/d/757). This reference retains all 65 concepts; it no longer reproduces the Sheet exactly.
+Derived from the [Verified Quranic vocabulary Sheet](https://docs.google.com/spreadsheets/d/1PLLtcgwbwtkOfpAZOotUQiZw-ARtZiAQuAkx2Z4D0XA/edit?gid=0#gid=0), normalized on 2026-08-21. Local revisions adopted on 2026-09-07 follow [community feedback](https://community.itqan.dev/d/757). All 65 concepts remain; the reference no longer reproduces the Sheet exactly.
 
-## Identity, provenance, and alternative types
+## Provenance and keys
 
-- Concept keys were introduced in this revision, derived from the revised singular names using lowercase snake_case and the identifier rules in the skill. Keys remain stable if display names change later. They are reference metadata, not mandatory names for consumer database keys.
-- Canonical singulars and plurals come from the normalized Sheet snapshot except `Kalimah / Kalimahs` → `Word / Words`, `Harf / Harfs` → `Letter / Letters`, and `Safhah / Safhahs` → `Page / Pages`.
-- All pre-revision alternatives retain their text and singular/plural column, except `Word`, `Letter`, and `Page`, which are now canonical. Former canonical forms were added as legacy alternatives. Original plural alternatives for these three concepts are also classified as legacy.
-- Alternative types are local editorial classifications of the snapshot, not claims about separate fields in the Sheet. The snapshot had combined spelling and literal-translation data. Definitions, concept keys, and related terms below are local additions.
-- `spelling`: another Latin-script spelling of the name. `transliteration`: another Arabic-derived name or Arabic plural rendered in Latin script. Neither type establishes equivalence without concept and number context.
-- `legacy`: a superseded name or variant of a superseded name. `gloss`: an English translation, explanation, or descriptive label; eligible for replacement only when used as a name for this exact concept, not merely as explanatory prose.
-- `Related terms` records distinctions, not aliases. These strings never authorize a replacement or create new canonical entries. No derived plural aliases are generated from this column.
-- Singular/plural columns govern replacement number. A label occurring in both requires context. `—` in the canonical plural column means no plural is defined; do not invent one. Existing canonical plurals are explicit values, including shortened multiword forms.
-- Arabic labels and orthographic rules remain outside this English enforcement reference. A localized UI may use a different label for the same concept.
+Concept keys were introduced in this revision from the revised singular names, using lowercase snake_case and the skill's identifier rules. Keep these keys stable. Consumer database keys need not use the same names.
 
-## Definitions for revised concepts
+Canonical forms follow the snapshot except `Kalimah / Kalimahs` → `Word / Words`, `Harf / Harfs` → `Letter / Letters`, and `Safhah / Safhahs` → `Page / Pages`. Prior alternatives retain their text and number columns except `Word`, `Letter`, and `Page`, now canonical; former canonical forms and their plural alternatives are legacy names.
 
-- **Word (`word`):** an orthographic word in the referenced Quran text dataset, distinct from a morphological segment. Use the dataset's documented word boundaries; this convention does not prescribe segmentation or word counts. A segment must not be renamed to Word merely because it was called Kalimah.
-- **Page (`page`):** a page within a specified Mushaf edition or layout. Interpret page numbers within that edition/layout, not as universal Quran locations. Page belongs to layout, not beneath Letter in a text hierarchy. A screen, web page, or pagination cursor is not this concept.
-- **Letter (`letter`):** an alphabetic letter of the Quran text, distinct from a Unicode character or glyph. This entry does not cover other senses of harf. Do not infer an alphabetic-letter meaning from a variable name or a Quran-related file alone; inspect its documentation and use. This convention does not prescribe a letter-counting algorithm.
+The snapshot combined spellings and literal translations. Alternative types, definitions, keys, and related terms were added locally; they do not represent separate Sheet fields. Arabic labels and orthography remain outside enforcement; localized UI labels may differ.
+
+## Alternative types
+
+- `spelling`: another Latin-script spelling of a name.
+- `transliteration`: another Arabic-derived name or Arabic plural in Latin script.
+- `legacy`: a superseded name or its variant.
+- `gloss`: an English translation, explanation, or descriptive label. Replace only when naming the exact concept; preserve explanatory prose.
+- `Related terms`: distinctions that never authorize replacement, create canonical entries, or generate plural aliases.
+
+Meaning and number must match. Singular/plural columns govern number, and forms listed in both require context. When `—` marks an undefined plural, do not invent one; use explicit plural values, including shortened multiword forms.
+
+## Revised definitions
+
+**Word (`word`)** means an orthographic word in the referenced Quran text dataset. Follow its documented word boundaries; this convention prescribes neither segmentation nor word counts. Do not rename a morphological segment to Word because it was called Kalimah.
+
+**Page (`page`)** means a page within a specified Mushaf edition or layout. Page numbers depend on that layout and are not universal Quran locations. Page belongs to layout rather than beneath Letter in the text hierarchy; screens, web pages, and pagination cursors are excluded.
+
+**Letter (`letter`)** means an alphabetic letter of the Quran text, excluding Unicode characters, glyphs, and other senses of harf. Establish meaning from documentation and use, never from a variable name or Quran-related file alone. This convention does not prescribe letter counting.
 
 ## Approved vocabulary
 

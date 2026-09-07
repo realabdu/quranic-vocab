@@ -1,31 +1,27 @@
 # Naming policy
 
-Use this policy when explaining naming choices or proposing vocabulary revisions. Audit and enforce use the approved vocabulary, not fresh naming decisions made from these guidelines.
+Retain specialized Quranic terms when English loses a meaningful distinction, and use ordinary English where it conveys a general concept accurately: `Surah`, `Ayah`, `Qira'ah`, and `Riwayah` alongside `Translation`, `Word Root`, `Word`, `Page`, and `Letter`.
 
-## Choosing a name
+Define the concept first. Developer familiarity and established usage can inform the name, but neither replaces a definition that distinguishes the concept from nearby meanings. [vocabulary.md](vocabulary.md) holds all approved names and the three revised definitions. This revision changes only those three names; other entries remain binding until explicitly revised.
 
-Retain specialized Quranic terminology when an English equivalent loses a meaningful distinction. Prefer ordinary English for general concepts whose meaning it conveys accurately. This allows `Surah`, `Ayah`, `Qira'ah`, and `Riwayah` alongside `Translation`, `Word Root`, `Word`, `Page`, and `Letter`.
+## Transliteration
 
-Define the concept before choosing its label. Explain what the term includes and what nearby concepts it excludes. Developer familiarity and established usage are useful evidence, but neither substitutes for checking meaning. The three revised definitions and all approved names live only in [vocabulary.md](vocabulary.md).
+The table governs spelling. This practical convention is not a reversible scholarly system:
 
-These criteria guide additions and reviews; they do not imply that every inherited entry has been reconsidered. This revision changes only the three approved names. Other canonical names remain binding until explicitly revised.
+- Retain `h` in standalone `-ah` endings such as `Surah`, `Ayah`, and `Riwayah`. Do not extend this mechanically to compounds or unlisted forms.
+- Follow listed plain-vowel mappings: `Tajweed` → `Tajwid`, `Tarteel` → `Tartil`, and `Nuzool` → `Nuzul`. Do not simplify doubled vowels or macrons elsewhere by analogy.
+- Keep approved prose punctuation: `Qira'ah`, `Isti'adhah`, and `I'rab`. Do not add punctuation to `Quran`, `Juz`, or `Ruku` for uniformity; the skill entrypoint defines code rendering.
+- Preserve compound spacing, hyphens, articles, and capitalization, as in `Rub al-Hizb` and `Al-Mathani`. Do not generate alternate compounds or add articles automatically.
+- Use explicit `+s` plurals, including shortened multiword forms. Arabic plurals remain typed alternatives, and missing plurals stay undefined.
 
-## Practical transliteration and identifiers
+## Identity
 
-This is a practical English naming convention, not a reversible scholarly transliteration system. The approved spellings are authoritative; the following describes their conventions and exceptions:
+Keep concept keys stable through label changes. Prose uses the approved English label; code follows its existing identifier style. Localized interfaces may use other labels for the same concept, and Arabic labels are outside the audit's scope.
 
-- Standalone names with the familiar `-ah` ending retain `h`, as in `Surah`, `Ayah`, and `Riwayah`. Do not apply this mechanically within compounds or to forms absent from the table.
-- Established plain-vowel spellings are preferred over doubled vowels or macrons where the table lists that mapping: `Tajweed` → `Tajwid`, `Tarteel` → `Tartil`, and `Nuzool` → `Nuzul`. This is not a rule to shorten every doubled vowel in arbitrary text.
-- Prose keeps the punctuation in approved names such as `Qira'ah`, `Isti'adhah`, and `I'rab`. Existing names such as `Quran`, `Juz`, and `Ruku` omit punctuation; do not add it to force uniformity. Identifier rendering is defined in the skill entrypoint.
-- Compounds retain their approved spaces, hyphens, article forms, and capitalization, such as `Rub al-Hizb` and `Al-Mathani`. Do not add articles or generate alternative compound spellings automatically.
-- Canonical plurals are explicit table values following the adopted English `+s` convention, including established shortened multiword plurals. Arabic plurals remain typed alternatives. Missing plurals stay undefined.
+## Contributions
 
-## Identity and contributions
+Propose a definition, singular and plural (or no plural), rationale, sources, and a prose/code example. Type alternatives by spelling, Arabic-derived form, legacy name, explanatory gloss, or related concept, preserving number. Explain spelling exceptions and compatibility impacts.
 
-Keep a concept's reference key stable across label changes. Prose uses the approved English label; code renders that label in its existing identifier style. A localized interface can display another label for the same concept without changing its identity. Arabic labels are not audited by this skill.
+Check existing entries before adding a concept, and review uncertain relationships before treating them as aliases. Naming rules guide proposals. Only explicit maintainer adoption changes the vocabulary and its provenance; ordinary audits report unlisted concepts as uncovered.
 
-For an addition or revision, provide the concept definition, proposed singular and plural (or no plural), selection rationale, supporting sources, and a prose/code example. Separate spelling variants, Arabic-derived alternatives, legacy names, explanatory glosses, and related concepts, retaining grammatical number. Explain any spelling exception and any compatibility impact on existing consumers.
-
-Compare the proposal with existing entries before adding a concept. A maintainer's explicit adoption updates the authoritative vocabulary and its provenance; naming guidance alone does not grant canonical status. During ordinary audits, absent concepts remain uncovered. Review uncertain semantic relationships before classifying them as aliases.
-
-Renaming the reference's canonical label does not authorize changes to external API contracts or consumer repositories. Old names can remain as typed legacy alternatives for deliberate migration. This repository remains an opinionated convention, not a claim of community-wide ratification.
+Old labels may remain as legacy alternatives for migration. A vocabulary revision does not authorize edits to external API contracts or consumer repositories, nor imply community-wide ratification of this opinionated convention.
