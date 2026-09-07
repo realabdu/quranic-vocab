@@ -1,85 +1,63 @@
 ---
 name: quranic-vocab
-description: Audit or enforce an opinionated English naming convention for Quranic concepts in prose and code using a bundled canonical vocabulary table. Use when reviewing, writing, or standardizing English Quranic terminology such as Surah, Ayah, Juz, Mushaf, Riwayah, or related code identifiers, schemas, documentation, and copy. Do not use for Arabic vocabulary or Arabic orthography.
+description: Audit or enforce an opinionated English naming convention for Quranic concepts in prose and code. Use for terminology such as Surah, Ayah, Juz, Mushaf, and Riwayah. Excludes Arabic vocabulary and orthography.
 ---
 
 # Quranic Vocabulary
 
-Standardize English Quranic vocabulary against the canonical table. Read [references/vocabulary.md](references/vocabulary.md) completely before every audit or enforcement pass; it is the runtime source of truth.
+Read [references/vocabulary.md](references/vocabulary.md) in full before each pass. Its names, definitions, and typed alternatives govern the result; repository usage and provider preferences do not override them. Read [references/naming-policy.md](references/naming-policy.md) when explaining choices or proposing revisions.
 
-## Routing
+## Modes
 
-| Mode | Use when | Mutates the target |
+| Mode | Trigger | Mutates |
 | --- | --- | --- |
-| `audit` | Bare invocation, or requests to audit, evaluate, diagnose, review, or check vocabulary | No |
-| `enforce` | Explicit requests to fix, correct, rename, update, apply, or enforce the convention | Yes |
+| `audit` | Bare invocation; audit, evaluate, diagnose, review, check | No |
+| `enforce` | Explicitly fix, correct, rename, update, apply, enforce | Yes |
 
-A bare invocation always defaults to `audit`. Do not edit unless the user's request clearly routes to `enforce`.
+Default to `audit`; never edit without clear `enforce` intent. Audit English prose and code only. Never audit Arabic words, spelling, articles, or diacritics. Localized UI labels may differ while sharing a stable concept key.
 
-## Scope
+## Names and number
 
-- Evaluate English prose and code, including identifiers, types, schema fields, comments, documentation, tests, and filenames when relevant.
-- Do not audit Arabic words, Arabic spelling, articles, or diacritics.
-- Treat the canonical singular and the listed canonical plural as the only standard English forms for that concept.
-- Treat every populated alternative in the table as noncanonical when it denotes the Quranic concept.
-- If the plural column is `—`, no canonical plural exists. Do not invent one; flag a clearly pluralized use as unsupported and rewrite around the singular only in `enforce` mode.
-- If a Quranic English concept is not represented in the table, report it as uncovered. Do not invent a canonical replacement.
+Use the listed canonical singular and `+s` plural. Match spelling, transliteration, and legacy alternatives only when they name the same concept. Replace a gloss only when used as that concept's name; preserve explanations. Related terms are never aliases.
+
+Preserve grammatical number: `Riwayat` becomes `Riwayahs`, not `Riwayah`. Where a canonical plural exists, consider mechanical `+s` forms of singular alternatives with their original type: `Kalimah` → `Kalimahs` → `Words`; naming use of `Verse` → `Verses` → `Ayahs`. Explicit number entries take precedence; never derive aliases from related terms.
+
+`Qira'at` appears in both number columns. Use grammar, types, and usage to resolve number, including punctuation-free identifiers such as `qiraat`. A single reading maps to `Qira'ah`, multiple readings to `Qira'ahs`; insufficient context means ambiguous and unchanged.
+
+When the plural column is `—`, do not invent a plural, and report plural usage as unsupported. Report absent Quranic English concepts as uncovered, without inventing replacements.
 
 ## Matching
 
-Match vocabulary case-insensitively, then render the canonical form in the target's existing style.
+Match complete words and identifier tokens case-insensitively, using longest-match precedence. Canonical singulars and plurals protect shorter forms inside them: `Sura` in `Surah`, `Aya` in `Ayah`, `Riwaya` in `Riwayah`, `Word` in `Word Root`, and `Recitation` in `Murattal Recitation`. Do not match arbitrary substrings.
 
-Apply longest-match precedence. A canonical multiword term or plural shields shorter table forms wholly contained inside it. For example, do not flag `Word` inside canonical `Word Root`, `Letter` inside canonical `Disjointed Letter`, or `Recitation` inside canonical `Murattal Recitation`. When candidate noncanonical forms overlap, classify the longest complete form first.
-
-For code, recognize terms inside snake_case, camelCase, PascalCase, kebab-case, SCREAMING_SNAKE_CASE, and filenames. Preserve the repository's identifier convention while replacing the vocabulary:
+Recognize snake_case, camelCase, PascalCase, kebab-case, and SCREAMING_SNAKE_CASE in code, schemas, and filenames. Preserve identifier style: remove apostrophes and modifier punctuation within words, split spaces and hyphens into tokens, then apply the target's casing and separators. Prose retains exact table spelling; code renderings are not additional prose spellings.
 
 - `verse_count` → `ayah_count`
 - `VerseRange` → `AyahRange`
-- `chapter-id` → `surah-id`
-- `VERSE_NUMBER` → `AYAH_NUMBER`
+- `kalimah_count` → `word_count` (orthographic words)
+- `SafhahRange` → `PageRange` (a Mushaf layout)
+- `HARF_COUNT` → `LETTER_COUNT` (alphabetic letters)
+- `qiraat_id` → `qiraah_id` only for a documented single reading
+- `GRAMMATICAL_ANALYSIS` → `IRAB`
+- `Rub al-Hizb` → `rub_al_hizb` or `RubAlHizb`
 
-A table match is only a violation when it denotes the Quranic concept. Use surrounding language, nearby identifiers, imports, types, schema descriptions, and domain context to decide. Ordinary uses such as a web `page`, a documentation `chapter`, or a generic `word` are not violations.
+## Classification
 
-Classify uncertain occurrences as ambiguous. Never silently turn an ambiguous match into a confirmed violation.
+Inspect surrounding prose, symbols, types, and schema descriptions against the definitions. A Quran-related file alone does not establish a term's meaning. Generic web `page`, book `chapter`, and ordinary `word` uses are valid. Do not rename characters, glyphs, morphological segments, or other senses of harf to Word, Page, or Letter.
+
+- **Confirmed inconsistency:** a noncanonical name for the same Quranic concept.
+- **Ambiguous:** meaning or number is unclear; never treat it as confirmed.
+- **Intentional mention:** a proper name, brand, quotation, research comparison, explanatory gloss, URL, command, or immutable external contract literal. Preserve it, including `An Ayah is often translated as “verse”.` Owned names around external literals still follow the convention.
+- **Uncovered:** a distinct Quranic English concept absent from the table; report without replacement.
 
 ## Audit
 
-1. Resolve the requested text, files, directories, or current code changes.
-2. Find candidate noncanonical forms from the complete table. For codebases, use targeted repository search and inspect enough surrounding context to classify each candidate.
-3. Report confirmed inconsistencies with the found form, canonical replacement, and location.
-4. Report ambiguous matches separately.
-5. Make no changes.
+Resolve the requested text, files, directories, or changes. Search typed alternatives, eligible derived `+s` forms, and identifier forms using tools such as `rg`; exclude related terms from alias matching. Inspect and classify each candidate without editing.
 
-Use this output shape:
-
-```markdown
-## Vocabulary Audit
-
-| Location | Found | Canonical | Reason |
-| --- | --- | --- | --- |
-
-## Ambiguous Matches
-
-| Location | Found | Why ambiguous |
-| --- | --- | --- |
-
-## Summary
-
-- Confirmed inconsistencies: N
-- Ambiguous matches: N
-- Uncovered Quranic terms: N
-```
-
-Omit an empty section. If nothing is wrong, say the target conforms to the table.
+For confirmed inconsistencies, report location, concept key, alternative type, found form, and replacement. List ambiguous, intentional, and uncovered occurrences separately. Report when no confirmed inconsistency remains; claim conformity only if no ambiguous, uncovered, or unsupported plural usage remains.
 
 ## Enforce
 
-1. Run the audit logic first.
-2. Correct every confirmed inconsistency.
-3. In prose, preserve meaning, grammar, number, and surrounding style.
-4. In code, perform a coherent symbol rename across declarations, references, tests, schemas, and relevant filenames. Do not use blind global replacement.
-5. Leave ambiguous matches unchanged and report them.
-6. Run relevant formatters, tests, type checks, or schema validation available in the target.
-7. Re-audit the changed target and report any remaining confirmed inconsistencies.
+Audit first, then correct confirmed inconsistencies while preserving meaning, grammar, number, and style. In code, rename owned symbols across declarations, references, schemas, tests, and relevant filenames. Do not blind-replace text or mutate intentional literals; leave ambiguous and uncovered occurrences unchanged.
 
-Return a concise summary of changed files or text, validation performed, unresolved ambiguous matches, and uncovered terms.
+Run relevant validation and re-audit, then report changed files and unresolved findings.
