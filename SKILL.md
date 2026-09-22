@@ -1,9 +1,9 @@
 ---
-name: quranic-vocab
+name: quranic-terminology
 description: Audit or enforce an opinionated English naming convention for Quranic concepts in prose and code. Use for terminology such as Surah, Ayah, Juz, Mushaf, and Riwayah. Excludes Arabic vocabulary and orthography.
 ---
 
-# Quranic Vocabulary
+# Quranic Terminology
 
 Read [references/vocabulary.md](references/vocabulary.md) in full before each pass. Its names, definitions, and typed alternatives govern the result; repository usage and provider preferences do not override them. Read [references/naming-policy.md](references/naming-policy.md) when explaining choices or proposing revisions.
 

@@ -1,4 +1,4 @@
-# Quranic Vocab
+# Quranic Terminology
 
 A Codex skill that audits and enforces an opinionated English naming convention for Quranic concepts in prose and code.
 
@@ -15,15 +15,26 @@ Entries have stable keys and typed alternatives: spelling variants, transliterat
 `audit` reports inconsistencies without editing and is the default. Use `enforce` to request canonical replacements explicitly.
 
 ```text
-$quranic-vocab audit <text-or-path>
-$quranic-vocab enforce <text-or-path>
+$quranic-terminology audit <text-or-path>
+$quranic-terminology enforce <text-or-path>
 ```
 
 ```sh
-git clone https://github.com/realabdu/quranic-vocab.git ~/.codex/skills/quranic-vocab
+git clone https://github.com/realabdu/quranic-terminology.git ~/.codex/skills/quranic-terminology
 ```
 
 Read [references/vocabulary.md](references/vocabulary.md) for names and definitions, and [SKILL.md](SKILL.md) for behavior.
+
+Previously named `quranic-vocab`. For an existing installation, rename its
+skill directory to `quranic-terminology`, update its Git remote to the URL
+above, and pull the renamed skill. Avoid keeping both copies installed.
+
+## Automated pre-commit checks
+
+[quranic-terminology-lint](https://github.com/realabdu/quranic-terminology-lint)
+provides a separate deterministic CLI and pre-commit hook. It bundles a
+180-entry Quran.ws snapshot, not this skill's 65-concept vocabulary; the two
+tools do not currently guarantee identical terminology decisions.
 
 ## Contributions
 

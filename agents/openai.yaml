@@ -1,4 +1,4 @@
 interface:
-  display_name: "Quranic Vocabulary"
+  display_name: "Quranic Terminology"
   short_description: "Audit and enforce Quranic English terms"
-  default_prompt: "Use $quranic-vocab to audit this text or code for canonical Quranic English vocabulary."
+  default_prompt: "Use $quranic-terminology to audit this text or code for canonical Quranic English vocabulary."
