@@ -2,7 +2,7 @@
 
 Retain specialized Quranic terms when English loses a meaningful distinction, and use ordinary English where it conveys a general concept accurately: `Surah`, `Ayah`, `Qira'ah`, and `Riwayah` alongside `Translation`, `Word Root`, `Word`, `Page`, and `Letter`.
 
-Define the concept first. Developer familiarity and established usage can inform the name, but neither replaces a definition that distinguishes the concept from nearby meanings. [vocabulary.md](vocabulary.md) holds all approved names and the three revised definitions. This revision changes only those three names; other entries remain binding until explicitly revised.
+Define the concept first. Developer familiarity and established usage can inform the name, but neither replaces a definition that distinguishes the concept from nearby meanings. [vocabulary.md](vocabulary.md) holds all approved names, revised definitions, and the locally adopted Word Timestamp addition. Other entries remain binding until explicitly revised.
 
 ## Transliteration
 

@@ -34,6 +34,7 @@ Recognize snake_case, camelCase, PascalCase, kebab-case, and SCREAMING_SNAKE_CAS
 
 - `verse_count` → `ayah_count`
 - `VerseRange` → `AyahRange`
+- `word_timing` → `word_timestamp`; `wordTimings` → `wordTimestamps` (word-level audio spans)
 - `kalimah_count` → `word_count` (orthographic words)
 - `SafhahRange` → `PageRange` (a Mushaf layout)
 - `HARF_COUNT` → `LETTER_COUNT` (alphabetic letters)

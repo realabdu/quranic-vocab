@@ -2,7 +2,7 @@
 
 A Codex skill that audits and enforces an opinionated English naming convention for Quranic concepts in prose and code.
 
-The 65-concept vocabulary derives from the [verified Quranic vocabulary Sheet](https://docs.google.com/spreadsheets/d/1PLLtcgwbwtkOfpAZOotUQiZw-ARtZiAQuAkx2Z4D0XA/edit?gid=0#gid=0), with local revisions following [community feedback](https://community.itqan.dev/d/757). It preserves number. Audits use the adopted English `+s` plurals and exclude Arabic vocabulary.
+The vocabulary derives from the 65-concept [verified Quranic vocabulary Sheet](https://docs.google.com/spreadsheets/d/1PLLtcgwbwtkOfpAZOotUQiZw-ARtZiAQuAkx2Z4D0XA/edit?gid=0#gid=0), with local revisions following [community feedback](https://community.itqan.dev/d/757) and the maintainer-adopted Word Timestamp addition (66 concepts total). It preserves number. Audits use the adopted English `+s` plurals and exclude Arabic vocabulary.
 
 ## Choosing terms
 
@@ -33,8 +33,11 @@ above, and pull the renamed skill. Avoid keeping both copies installed.
 
 [quranic-terminology-lint](https://github.com/realabdu/quranic-terminology-lint)
 provides a separate deterministic CLI and pre-commit hook. It bundles a
-180-entry Quran.ws snapshot, not this skill's 65-concept vocabulary; the two
+180-entry Quran.ws snapshot, not this skill's 66-concept vocabulary; the two
 tools do not currently guarantee identical terminology decisions.
+
+Both use `word_timestamp` / `word_timestamps` for word-level audio spans,
+with `word_timing` / `word_timings` retained as legacy alternatives.
 
 ## Contributions
 

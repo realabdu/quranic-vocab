@@ -6,7 +6,7 @@ Derived from the [Verified Quranic vocabulary Sheet](https://docs.google.com/spr
 
 Concept keys were introduced in this revision from the revised singular names, using lowercase snake_case and the skill's identifier rules. Keep these keys stable. Consumer database keys need not use the same names.
 
-Canonical forms follow the snapshot except `Kalimah / Kalimahs` → `Word / Words`, `Harf / Harfs` → `Letter / Letters`, and `Safhah / Safhahs` → `Page / Pages`. Prior alternatives retain their text and number columns except `Word`, `Letter`, and `Page`, now canonical; former canonical forms and their plural alternatives are legacy names.
+The original 65 concepts follow the snapshot except `Kalimah / Kalimahs` → `Word / Words`, `Harf / Harfs` → `Letter / Letters`, and `Safhah / Safhahs` → `Page / Pages`. Word Timestamp is an additional locally adopted concept, documented below. Prior alternatives retain their text and number columns except `Word`, `Letter`, and `Page`, now canonical; former canonical forms and their plural alternatives are legacy names.
 
 The snapshot combined spellings and literal translations. Alternative types, definitions, keys, and related terms were added locally; they do not represent separate Sheet fields. Arabic labels and orthography remain outside enforcement; localized UI labels may differ.
 
@@ -30,6 +30,13 @@ Meaning and number must match. Singular/plural columns govern number, and forms 
 
 ## Approved vocabulary
 
+Maintainer addition: **Word Timestamp (`word_timestamp`)** is the start/end
+time span corresponding to one orthographic word in a recitation recording.
+Its plural is **Word Timestamps** (`word_timestamps`). **Word Timing / Word
+Timings** are legacy names for this same concept. Preserve ordinary timing
+and ayah-level timing names; this addition does not rename them. This locally
+adopted addition brings the vocabulary to 66 concepts; it is not a Sheet update.
+
 | Concept key | Canonical singular | Canonical +s plural | Singular alternatives (typed) | Plural alternatives (typed) | Related terms (not aliases) |
 | --- | --- | --- | --- | --- | --- |
 | quran | Quran | — | spelling: Qur'an; spelling: Qur’an; spelling: Koran | — | — |
@@ -40,6 +47,7 @@ Meaning and number must match. Singular/plural columns govern number, and forms 
 | ayah | Ayah | Ayahs | spelling: Aya; gloss: Verse | transliteration: Ayat | — |
 | fasilah | Fasilah | Fasilahs | spelling: Fasila; gloss: Verse Ending | transliteration: Fawasil | — |
 | word | Word | Words | legacy: Kalimah; legacy: Kalima | legacy: Kalimahs; legacy: Kalimat | Morphological Segment |
+| word_timestamp | Word Timestamp | Word Timestamps | legacy: Word Timing | legacy: Word Timings | Ayah Timing; Morphological Segment |
 | letter | Letter | Letters | legacy: Harf | legacy: Harfs; legacy: Huruf | Unicode Character; Glyph |
 | basmalah | Basmalah | — | spelling: Basmala; gloss: Bismillah Formula | — | — |
 | disjointed_letter | Disjointed Letter | Disjointed Letters | gloss: Separated Letter | transliteration: Huruf Muqatta'ah | — |
